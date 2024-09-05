@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TouriHSTan - The essence of Hindustan</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            transition: background-color 0.3s ease;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        header nav h1 {
+            margin: 0;
+            font-size: 28px;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        .hero {
+            background: url('https://media.gettyimages.com/id/479801024/photo/taj-mahal-at-sunrise.jpg?s=612x612&w=0&k=20&c=_yTNMAP49eP9PULBdbU5gLAo0VXC84gCbIp4LNvgvUE=') no-repeat center center/cover;
+            height: 800px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            font-size: 60px;
+            color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            transform: rotate(-15deg);
+            font-weight: bold;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-out 0.5s;
+        }
+
+        .hero .btn,
+        .hero .btn-secondary {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .hero .btn-secondary {
+            background-color: #28a745;
+        }
+
+        .hero .btn:hover,
+        .hero .btn-secondary:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        section {
+            padding: 60px 20px;
+            text-align: center;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .package-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .package-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 280px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .package-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .package-card img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .package-card h3 {
+            margin: 10px;
+            font-size: 24px;
+        }
+
+        .package-card p {
+            margin: 10px;
+            font-size: 18px;
+        }
+
+        .package-card .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            display: block;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px;
+        }
+
+        .package-card .btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .search-result {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #fff;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .search-result:hover {
+            background-color: #f1f1f1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .package-options {
+            margin: 20px 10px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .package-options:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .package-options h4 {
+            margin: 0 0 10px 0;
+            font-size: 22px;
+        }
+
+        .package-options p {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+        }
+
+        .package-options .btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            display: inline-block;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px 0;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .package-options .btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <h1>TouriHSTan</h1>
+            <ul>
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('packages')">Packages</a></li>
+                <li><a href="#" onclick="showPage('search')">Search City</a></li>
+                <li><a href="#" onclick="showPage('feedback')">Feedback</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact Us</a></li>
+                <li><a href="#" onclick="showPage('about')">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <h2>Discover Amazing Local Travel Packages</h2>
+                <p>Explore the best offers from local companies in your favorite city.</p>
+                <a href="#" onclick="showPage('packages')" class="btn">View Packages</a>
+                <a href="#" onclick="showPage('search')" class="btn btn-secondary">Search Cities</a>
+            </div>
+        </section>
+
+        <!-- Packages Section -->
+        <section id="packages" class="page">
+            <h2>Cities to Explore</h2>
+            <div class="package-list">
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/520120864/photo/bombay-at-twilight.jpg?s=612x612&w=0&k=20&c=0edqDWGDKOSDEmbWHQlk7tanjYO0qAQdjkPwcG-jx2Q=" alt="Mumbai">
+                    <h3>Mumbai</h3>
+                    <p>Explore the city of dreams.</p>
+                    <a href="#" onclick="showPage('mumbai-packages')" class="btn">View</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/506812641/photo/india-gate.jpg?s=612x612&w=0&k=20&c=3ZxJgQAcE6UWq6zf9ONdfpDpwCyN9iJ5vDLEQNaVFRo=" alt="Delhi">
+                    <h3>Delhi</h3>
+                    <p>Discover the capital city.</p>
+                    <a href="#" onclick="showPage('delhi-packages')" class="btn">View</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/534909771/photo/bangalore-palace.jpg?s=612x612&w=0&k=20&c=SguAbTg2nw5uv-f1uPaVLCQFUIZ-6c9OfC2PzC8m5pQ=" alt="Bangalore">
+                    <h3>Bangalore</h3>
+                    <p>Visit the Silicon Valley of India.</p>
+                    <a href="#" onclick="showPage('bangalore-packages')" class="btn">View</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/172356630/photo/victoria-memorial-kolkata.jpg?s=612x612&w=0&k=20&c=kZovXPusVdve8G_6mvcOaO4O2rli4wldy0OFko_FvYM=" alt="Kolkata">
+                    <h3>Kolkata</h3>
+                    <p>Experience the cultural heritage.</p>
+                    <a href="#" onclick="showPage('kolkata-packages')" class="btn">View</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/949496572/photo/marina-beach-salmiya.jpg?s=612x612&w=0&k=20&c=LzGSAaJRxGfU-KErYpoEaTx88QoTPaiz8HLb9pT26Jw=" alt="Chennai">
+                    <h3>Chennai</h3>
+                    <p>Enjoy the coastal city vibes.</p>
+                    <a href="#" onclick="showPage('chennai-packages')" class="btn">View</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/184763829/photo/dal-lake.jpg?s=612x612&w=0&k=20&c=SBzUPNcVf8A6yFt6h2n9GMQBeQg3vlHK3N4WT1qp0k8=" alt="Jammu">
+                    <h3>Kashmir</h3>
+                    <p>Explore the heaven on earth.</p>
+                    <a href="#" onclick="showPage('kashmir-packages')" class="btn">View</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1068084450/photo/scenic-landscape-with-kumarakom-lake-resort-kerala-india.jpg?s=612x612&w=0&k=20&c=atU46KSiAPUgYTmgXhVVcyV3RjxJn_0vPdeI0Dy4-5Y=" alt="Kerala">
+                    <h3>Kerala</h3>
+                    <p>Welcome to God's own country.</p>
+                    <a href="#" onclick="showPage('kerala-packages')" class="btn">View</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1211749825/photo/tea-garden-against-foggy-mountains.jpg?s=612x612&w=0&k=20&c=rJnn7_jHZqprvI2bT65PH55_4Fy5ae_LUH3-ZL-DFQQ=" alt="Assam">
+                    <h3>Assam</h3>
+                    <p>Your Gateway to the Northeast.</p>
+                    <a href="#" onclick="showPage('assam-packages')" class="btn">View</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/650719278/photo/architectural-features-of-adalaj-stepwell-solanki-architectural-style-located-in-ahmedabad.jpg?s=612x612&w=0&k=20&c=zhgl9Rv8qYfzfB-nmayD9Ylt11PDXN9_6B5BgTF49Vk=" alt="Ahmedabad">
+                    <h3>Ahmedabad</h3>
+                    <p>Explore the City of Century.</p>
+                    <a href="#" onclick="showPage('ahmedabad-packages')" class="btn">View</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/187639600/photo/beautiful-landscape-in-norther-part-of-india.jpg?s=612x612&w=0&k=20&c=uxT5x1TUjmdNhTMetKbTBW6gNGMMofxF1i0QtY3wl6M=" alt="Ladakh">
+                    <h3>Ladakh</h3>
+                    <p>The land of high passes.</p>
+                    <a href="#" onclick="showPage('ladakh-packages')" class="btn">View</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/520718250/photo/hawa-mahal-or-palace-of-the-winds-jaipur-rajasthan-india.jpg?s=612x612&w=0&k=20&c=wuniEdHeecWVGU5kYUYHJxBJ732sQvtjKsEj_m_HHcQ="alt="Jaipur">
+                    <h3>Jaipur</h3>
+                    <p>Visit the pink city.</p>
+                    <a href="#" onclick="showPage('jaipur-packages')" class="btn">View</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/175804012/photo/hyderabad-blues.jpg?s=612x612&w=0&k=20&c=gS8eQVRxorkiyeAvf9nTStwfgLFbcAaBtupdgBWr_sc="alt="Hyderabad">
+                    <h3>Hyderabad</h3>
+                    <p>The city of pearls.</p>
+                    <a href="#" onclick="showPage('hyderabad-packages')" class="btn">View</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mumbai Packages Section -->
+        <section id="mumbai-packages" class="page">
+            <h2>Mumbai Travel Agencies</h2>
+            <div class="package-list">
+                <div class="package-card">
+                    <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/06/6a/c4/f0.jpg" alt="Mumbai Package 1">
+                    <h3>Trip Time Tours</h3>
+                    <p>Starting from ₹3999</p>
+                    <a href="#" onclick="showPage('mumbai-package1-details')"  class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://assets-news.housing.com/news/wp-content/uploads/2022/07/06121137/10-best-tourist-places-to-visit-in-Mumbai-and-things-to-do-01.jpg" alt="Mumbai Package 2">
+                    <h3>Mumbai Travel Hub</h3>
+                    <p>Starting from ₹2999</p>
+                    <a href="#" onclick="showPage('mumbai-package2-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://tds.indianeagle.com/wp-content/uploads/2022/04/Mumbai-Travel-Guide-01.png" alt="Assam Package 3">
+                    <h3>Holiday Vibes Tour and Travels</h3>
+                    <p>Starting from ₹4999</p>
+                    <a href="#" onclick="showPage('mumbai-package3-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://www.willflyforfood.net/wp-content/uploads/2019/03/first-timers-travel-guide-mumbai.jpg" alt="Assam Package 4">
+                    <h3>The Travel Co.</h3>
+                    <p>Starting from ₹4599</p>
+                    <a href="#" onclick="showPage('mumbai-package4-details')" class="btn">Explore</a>
+                </div>
+                <!-- Add more packages as needed -->
+            </div>
+        </section>
+        <!-- mumbai Package 1 Details -->
+        <section id="mumbai-package1-details" class="page">
+    <h2>Trip Time Tours</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('mumbai-packages')" class="btn">Back to Mumbai Packages</a>
+</section>
+
+<!-- Mumbai Package 2 Details -->
+<section id="mumbai-package2-details" class="page">
+    <h2>Mumbai Travel Hub</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel3.jpg" alt="3-Star Hotel Stay">
+            <h3>3-Star Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>City Tour, Breakfast Included</p>
+            <p>Price: ₹2999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel4.jpg" alt="Budget Hotel Stay">
+            <h3>Budget Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>Tour of Local Attractions</p>
+            <p>Price: ₹2499</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('mumbai-packages')" class="btn"> Back to Mumbai Packages</a>
+</section>
+
+<!-- Mumbai Package 3 Details -->
+<section id="mumbai-package3-details" class="page">
+    <h2>Holiday Vibes Tour and Travels</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('mumbai-packages')" class="btn">Back to Mumbai Packages</a>
+</section>
+<!-- Mumbai Package 4 Details -->
+<section id="mumbai-package4-details" class="page">
+    <h2>The Travel Co.</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('mumbai-packages')" class="btn">Back to Mumbai Packages</a>
+</section>
+        <!-- Delhi Packages Section -->
+        <section id="delhi-packages" class="page">
+            <h2>Delhi Travel Agencies</h2>
+            <div class="package-list">
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1225175111/photo/the-rashtrapati-bhavan-residence-of-the-president-of-india.jpg?s=612x612&w=0&k=20&c=FxljPeLef5qDPkPXLVvVaXvju-JEYndhyroIUOK7KkQ=" alt="Delhi Package 1">
+                    <h3>Happy Travels</h3>
+                    <p>Starting from ₹4499</p>
+                    <a href="#" onclick="showPage('delhi-package1-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/636880766/photo/india-gate-new-delhi-india-asia.jpg?s=612x612&w=0&k=20&c=0ZqaZ4vAnDJFImXvUr4Ia5tmGlG5FOBRrkbaUtGYTrY=" alt="Delhi Package 2">
+                    <h3>Delhi Travels</h3>
+                    <p>Starting from ₹3299</p>
+                    <a href="#" onclick="showPage('delhi-package2-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/142737752/photo/lotus-temple-new-delhi-india.jpg?s=612x612&w=0&k=20&c=pLG8odn755z_qB405_2T-GF-0MJVT3ziO7umCYxnINg=" alt="Delhi Package 3">
+                    <h3>Wander Routes</h3>
+                    <p>Starting from ₹3999</p>
+                    <a href="#" onclick="showPage('delhi-package3-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1092326108/photo/india-delhi-new-delhi-parliament-building-at-sunset-pollution-smog.jpg?s=612x612&w=0&k=20&c=DIvWuw31lNoySfnZBB3zDcvJ4orN2kvtXoDwgjrefrY=" alt="Delhi Package 4">
+                    <h3>Your Trip Co.</h3>
+                    <p>Starting from ₹5599</p>
+                    <a href="#" onclick="showPage('delhi-package4-details')" class="btn">Explore</a>
+                </div>
+                <!-- Add more packages as needed -->
+            </div>
+        </section>
+<!-- delhi Package 1 Details -->
+        <section id="delhi-package1-details" class="page">
+    <h2>Happy Travels</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('delhi-packages')" class="btn">Back to Delhi Packages</a>
+</section>
+
+<!-- delhi Package 2 Details -->
+<section id="delhi-package2-details" class="page">
+    <h2>Delhi Travels</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel3.jpg" alt="3-Star Hotel Stay">
+            <h3>3-Star Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>City Tour, Breakfast Included</p>
+            <p>Price: ₹2999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel4.jpg" alt="Budget Hotel Stay">
+            <h3>Budget Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>Tour of Local Attractions</p>
+            <p>Price: ₹2499</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('delhi-packages')" class="btn"> Back to Delhi Packages</a>
+</section>
+
+<!-- delhi Package 3 Details -->
+<section id="delhi-package3-details" class="page">
+    <h2>Wander Routes</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('delhi-packages')" class="btn">Back to Delhi Packages</a>
+</section>
+<!-- delhi Package 4 Details -->
+<section id="delhi-package4-details" class="page">
+    <h2>Your Trip Co.</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('delhi-packages')" class="btn">Back to Delhi Packages</a>
+</section>
+
+        <!-- Bangalore Packages Section -->
+        <section id="bangalore-packages" class="page">
+            <h2>Bangalore Travel Agencies</h2>
+            <div class="package-list">
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1389618591/photo/cherry-blossoms-in-bloom.jpg?s=612x612&w=0&k=20&c=bdCKlUr7ooOtmRjOaJ3761qYHtlSTtMldvKJ3CMb2Co=" alt="Bangalore Package 1">
+                    <h3>Blossom tours</h3>
+                    <p>Starting from ₹1499</p>
+                    <a href="#" onclick="showPage('bangalore-package1-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/520827926/photo/magnificent-building-of-vidhan-saudha-at-bangalore-karnataka-india.jpg?s=612x612&w=0&k=20&c=crXYqfMkdpi0AaaGsWfJ05SShajdpmsgx40qzwr5ctA=" alt="Bangalore Package 2">
+                    <h3>Bangalore Nature Walk</h3>
+                    <p>Starting from ₹2999</p>
+                    <a href="#" onclick="showPage('bangalore-package2-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1141855273/photo/morning-view-from-the-top-of-hampi.jpg?s=612x612&w=0&k=20&c=L3X26Kk8Ve4Fli7IL6WtIBAcZQo3YFMmq_o6Q5in3XA=" alt="Bangalore Package 3">
+                    <h3>Trek tours</h3>
+                    <p>Starting from ₹2499</p>
+                    <a href="#" onclick="showPage('bangalore-package3-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/521647052/photo/colorful-signs-on-commercial-street.jpg?s=612x612&w=0&k=20&c=G-wGdYDatNYWJujhqTmuDZKctc6uItNE7gKF25soi9I=" alt="Bangalore Package 4">
+                    <h3>Rush city Travel Co.</h3>
+                    <p>Starting from ₹1499</p>
+                    <a href="#" onclick="showPage('bangalore-package4-details')" class="btn">Explore</a>
+                </div>
+                <!-- Add more packages as needed -->
+            </div>
+        </section>
+<!-- bangalore Package 1 Details -->
+        <section id="bangalore-package1-details" class="page">
+    <h2>Blossom tours</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('bangalore-packages')" class="btn">Back to Bangalore Packages</a>
+</section>
+
+<!-- bangalore Package 2 Details -->
+<section id="bangalore-package2-details" class="page">
+    <h2>Bangalore Nature Walk</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel3.jpg" alt="3-Star Hotel Stay">
+            <h3>3-Star Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>City Tour, Breakfast Included</p>
+            <p>Price: ₹2999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel4.jpg" alt="Budget Hotel Stay">
+            <h3>Budget Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>Tour of Local Attractions</p>
+            <p>Price: ₹2499</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('bangalore-packages')" class="btn"> Back to Bangalore Packages</a>
+</section>
+
+<!-- bangalore Package 3 Details -->
+<section id="bangalore-package3-details" class="page">
+    <h2>Trek tours</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('bangalore-packages')" class="btn">Back to Bangalore Packages</a>
+</section>
+<!-- bangalore Package 4 Details -->
+<section id="bangalore-package4-details" class="page">
+    <h2>Rush city Travel Co.</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('bangalore-packages')" class="btn">Back to Bangalore Packages</a>
+</section>
+
+        <!-- Kolkata Packages Section -->
+        <section id="kolkata-packages" class="page">
+            <h2>Kolkata Travel Agencies</h2>
+            <div class="package-list">
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/182565998/photo/an-evening-at-2nd-howrah-bridge-kolkata.jpg?s=612x612&w=0&k=20&c=QsEQi8OzI-i_Eh1EP42umIyNC1fnQEndnecq1ZuAvng=" alt="Kolkata Package 1">
+                    <h3>Kolkata River Cruise</h3>
+                    <p>Starting from ₹2899</p>
+                    <a href="#" onclick="showPage('kolkata-package1-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/142737753/photo/victoria-memorial-kolkata-india.jpg?s=612x612&w=0&k=20&c=Yov1P_0CP475AfJjZhhw0hmr4XNzvrXym4_O2d7yQJg=" alt="Kolkata Package 2">
+                    <h3>Kolkata Culture Tour</h3>
+                    <p>Starting from ₹3499</p>
+                    <a href="#" onclick="showPage('kolkata-package2-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/107312219/photo/taxi-in-kolkata.jpg?s=612x612&w=0&k=20&c=fx_hs5ZV7empwPsENhQ3GDdnla6TU0rRT04b20GFe1o=" alt="Kolkata Package 3">
+                    <h3>Voyage Vista</h3>
+                    <p>Starting from ₹2599</p>
+                    <a href="#" onclick="showPage('kolkata-package3-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/157588412/photo/victoria-memorial-in-calcutta-india.jpg?s=612x612&w=0&k=20&c=7MD4c-B6HsiOIxBd0vkBG9PYq_LxnelzrzLChg-vDiU=" alt="Kolkata Package 4">
+                    <h3>Destiny Tours and Travels</h3>
+                    <p>Starting from ₹3599</p>
+                    <a href="#" onclick="showPage('kolkata-package4-details')" class="btn">Explore</a>
+                </div>
+                <!-- Add more packages as needed -->
+            </div>
+        </section>
+<!-- kolkata Package 1 Details -->
+        <section id="kolkata-package1-details" class="page">
+    <h2>Kolkata River Cruise</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('kolkata-packages')" class="btn">Back to Kolkata Packages</a>
+</section>
+
+<!-- kolkata Package 2 Details -->
+<section id="kolkata-package2-details" class="page">
+    <h2>Kolkata Culture Tour</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel3.jpg" alt="3-Star Hotel Stay">
+            <h3>3-Star Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>City Tour, Breakfast Included</p>
+            <p>Price: ₹2999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel4.jpg" alt="Budget Hotel Stay">
+            <h3>Budget Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>Tour of Local Attractions</p>
+            <p>Price: ₹2499</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('kolkata-packages')" class="btn"> Back to Kolkata Packages</a>
+</section>
+
+<!-- kolkata Package 3 Details -->
+<section id="kolkata-package3-details" class="page">
+    <h2>Voyage Vista</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('kolkata-packages')" class="btn">Back to Kolkata Packages</a>
+</section>
+<!-- kolkata Package 4 Details -->
+<section id="kolkata-package4-details" class="page">
+    <h2>Destiny Tours and Travels</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('kolkata-packages')" class="btn">Back to Kolkata Packages</a>
+</section>
+
+
+        <!-- Chennai Packages Section -->
+        <section id="chennai-packages" class="page">
+            <h2>Chennai Travel Agencies</h2>
+            <div class="package-list">
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1194206060/photo/puratchi-thalaivar-dr-mgr-central-railway-station.jpg?s=612x612&w=0&k=20&c=oqzLssBs09Z2P8KCn2PAgFsIGcaOG06SxE4WFqEZK4k=" alt="Chennai Package 1">
+                    <h3>Anna tours </h3>
+                    <p>Starting from ₹1999</p>
+                    <a href="#" onclick="showPage('chennai-package1-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHby1QDsvRMunQMj271V462NCVQANpJz8NqA&s" alt="Chennai Package 2">
+                    <h3>TripBeam</h3>
+                    <p>Starting from ₹2999</p>
+                    <a href="#" onclick="showPage('chennai-package2-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/978023606/photo/shore-temple-garden-landscape-chennai-tamilnadu-india.jpg?s=612x612&w=0&k=20&c=jSNKZLvr6JgvgehoGBA8CVhFZYcsU_nYEuo3VvgJ2rQ=" alt="Chennai Package 3">
+                    <h3>Chennai Temple Tours</h3>
+                    <p>Starting from ₹3099</p>
+                    <a href="#" onclick="showPage('chennai-package3-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1478477037/photo/scenic-view-of-sea-against-sky-during-sunset-chennai-tamil-nadu-india.jpg?s=612x612&w=0&k=20&c=OX4gBvLABZnvWkz9bphMcPbLbTdnl8KqY5UdWcx0iDc=" alt="Chennai Package 4">
+                    <h3>Beachexplorer</h3>
+                    <p>Starting from ₹2499</p>
+                    <a href="#" onclick="showPage('chennai-package4-details')" class="btn">Explore</a>
+                </div>
+                <!-- Add more packages as needed -->
+            </div>
+        </section>
+<!-- chennai Package 1 Details -->
+        <section id="chennai-package1-details" class="page">
+    <h2>Anna tours</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('chennai-packages')" class="btn">Back to Chennai Packages</a>
+</section>
+
+<!-- chennai Package 2 Details -->
+<section id="chennai-package2-details" class="page">
+    <h2>TripBeam</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel3.jpg" alt="3-Star Hotel Stay">
+            <h3>3-Star Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>City Tour, Breakfast Included</p>
+            <p>Price: ₹2999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel4.jpg" alt="Budget Hotel Stay">
+            <h3>Budget Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>Tour of Local Attractions</p>
+            <p>Price: ₹2499</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('chennai-packages')" class="btn"> Back to Chennai Packages</a>
+</section>
+
+<!-- chennai Package 3 Details -->
+<section id="chennai-package3-details" class="page">
+    <h2>Chennai Temple Tours</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('chennai-packages')" class="btn">Back to Chennai Packages</a>
+</section>
+<!-- chennai Package 4 Details -->
+<section id="chennai-package4-details" class="page">
+    <h2>Beachexplorer</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('chennai-packages')" class="btn">Back to Chennai Packages</a>
+</section>
+
+        <!-- kashmir Packages Section -->
+        <section id="kashmir-packages" class="page">
+            <h2>Kashmir Travel Agencies</h2>
+            <div class="package-list">
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1320270628/photo/colorful-hot-air-balloon-flying-over-snowcapped-mountain.jpg?s=612x612&w=0&k=20&c=6EggE7evShKgd2hDTFj-qmY2gLTwY6qQUHE-VK-Bsnc=" alt="kashmir Package 1">
+                    <h3>kashmir Deluxe Tours</h3>
+                    <p>Starting from ₹9999</p>
+                    <a href="#" onclick="showPage('kashmir-package1-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/591407633/photo/srinagar-buildings-over-river-kashmir-india.jpg?s=612x612&w=0&k=20&c=zPSz7ZN59s0YEDGlcC_1mkk4FwUjggKzHIZGzFWC3tY=" alt="kashmir Package 2">
+                    <h3>kashmir Heritage Walk</h3>
+                    <p>Starting from ₹4999</p>
+                    <a href="#" onclick="showPage('kashmir-package2-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/458632837/photo/shikaras-and-houseboats-in-lake-dal.jpg?s=612x612&w=0&k=20&c=BW9kYP23ARuGi0t7ddBvz2kC_zWnSCuk38KMOe00EgQ=" alt="kashmir Package 3">
+                    <h3>Dal lake Tour</h3>
+                    <p>Starting from ₹2999</p>
+                    <a href="#" onclick="showPage('kashmir-package3-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/951010826/photo/reflection-of-houseboat-and-nature-at-dal-lake.jpg?s=612x612&w=0&k=20&c=GytT-sWlfqrDLqUacmaZkbCdvH9KW0z6VagLY4CiRZE=" alt="kashmir Package 4">
+                    <h3>Boathouse vibes</h3>
+                    <p>Starting from ₹3999</p>
+                    <a href="#" onclick="showPage('kashmir-package4-details')" class="btn">Explore</a>
+                </div>
+                <!-- Add more packages as needed -->
+            </div>
+        </section>
+<!-- kashmir Package 1 Details -->
+        <section id="kashmir-package1-details" class="page">
+    <h2>kashmir Deluxe Tours</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('kashmir-packages')" class="btn">Back to Kashmir Packages</a>
+</section>
+
+<!-- kashmir Package 2 Details -->
+<section id="kashmir-package2-details" class="page">
+    <h2>kashmir Heritage Walk</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel3.jpg" alt="3-Star Hotel Stay">
+            <h3>3-Star Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>City Tour, Breakfast Included</p>
+            <p>Price: ₹2999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel4.jpg" alt="Budget Hotel Stay">
+            <h3>Budget Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>Tour of Local Attractions</p>
+            <p>Price: ₹2499</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('kashmir-packages')" class="btn"> Back to Kashmir Packages</a>
+</section>
+
+<!-- kashmir Package 3 Details -->
+<section id="kashmir-package3-details" class="page">
+    <h2>Dal lake Tour</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('kashmir-packages')" class="btn">Back to Kashmir Packages</a>
+</section>
+<!-- kashmir Package 4 Details -->
+<section id="kashmir-package4-details" class="page">
+    <h2>Boathouse vibes</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('kashmir-packages')" class="btn">Back to Kashmir Packages</a>
+</section>
+
+          <!-- Kerala Packages Section -->
+        <section id="kerala-packages" class="page">
+            <h2>Kerala Travel Agencies</h2>
+            <div class="package-list">
+                <div class="package-card">
+                    <img src="https://origintoursandtravels.com/wp-content/uploads/2021/02/14.jpg" alt="Kerala Package 1">
+                    <h3>Kerala Deluxe Tour</h3>
+                    <p>Starting from ₹3499</p>
+                    <a href="#" onclick="showPage('kerala-package1-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2023/5/310436485/CF/PL/YT/11157639/kerala-tour-package-services-500x500.png" alt="Kerala Package 2">
+                    <h3>Kerala Heritage Walk Tours and Travels</h3>
+                    <p>Starting from ₹4999</p>
+                    <a href="#" onclick="showPage('kerala-package2-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2023/3/UF/AY/AE/11117777/kerala-tour-packages.jpg" alt="Kerala Package 3">
+                    <h3>Easy Trips</h3>
+                    <p>Starting from ₹3499</p>
+                    <a href="#" onclick="showPage('kerala-package3-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://res.cloudinary.com/dyiffrkzh/image/upload/c_fill,f_auto,fl_progressive.strip_profile,g_center,h_400,q_auto,w_700/v1697434652/bbj/kidddemssl8v8igltfum.jpg" alt="Kerala Package 4">
+                    <h3>Wander Way Travels</h3>
+                    <p>Starting from ₹2499</p>
+                    <a href="#" onclick="showPage('kerala-package4-details')" class="btn">Explore</a>
+                </div>
+                <!-- Add more packages as needed -->
+            </div>
+        </section>
+<!-- kerala Package 1 Details -->
+        <section id="kerala-package1-details" class="page">
+    <h2>Kerala Deluxe Tour</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('kerala-packages')" class="btn">Back to Kerala Packages</a>
+</section>
+
+<!-- kerala Package 2 Details -->
+<section id="kerala-package2-details" class="page">
+    <h2>Kerala Heritage Walk Tours and Travels</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel3.jpg" alt="3-Star Hotel Stay">
+            <h3>3-Star Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>City Tour, Breakfast Included</p>
+            <p>Price: ₹2999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel4.jpg" alt="Budget Hotel Stay">
+            <h3>Budget Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>Tour of Local Attractions</p>
+            <p>Price: ₹2499</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('kerala-packages')" class="btn"> Back to Kerala Packages</a>
+</section>
+
+<!-- kerala Package 3 Details -->
+<section id="kerala-package3-details" class="page">
+    <h2>Easy Trips</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('kerala-packages')" class="btn">Back to Kerala Packages</a>
+</section>
+<!-- kerala Package 4 Details -->
+<section id="kerala-package4-details" class="page">
+    <h2>Wander Way Travels</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('kerala-packages')" class="btn">Back to Kerala Packages</a>
+</section>
+        
+         <!-- Assam Packages Section -->
+        <section id="assam-packages" class="page">
+            <h2>Assam Travel Agencies</h2>
+            <div class="package-list">
+                <div class="package-card">
+                    <img src="https://www.thomascook.in/images/campaign-pages/travel-guidelines/Assam-mob.jpg" alt="Assam Package 1">
+                    <h3>Assam Deluxe Tour</h3>
+                    <p>Starting from ₹2499</p>
+                    <a href="#" onclick="showPage('assam-package1-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://static.toiimg.com/photo/70126811.cms" alt="Assam Package 2">
+                    <h3>Assam Nature Walk Tour and Travels</h3>
+                    <p>Starting from ₹4499</p>
+                    <a href="#" onclick="showPage('assam-package2-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://www.purvidiscovery.com/blog-img/everything-about-assam-tour-packages.jpg" alt="Assam Package 3">
+                    <h3>Holiday Heaven</h3>
+                    <p>Starting from ₹2999</p>
+                    <a href="#" onclick="showPage('assam-package3-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://cdn1.tripoto.com/media/filter/tst/img/1524784/Image/1574931787_assam_1.jpg.webp" alt="Assam Package 4">
+                    <h3>Skyway Tours</h3>
+                    <p>Starting from ₹3999</p>
+                    <a href="#" onclick="showPage('assam-package4-details')" class="btn">Explore</a>
+                </div>
+                <!-- Add more packages as needed -->
+            </div>
+        </section>
+<!-- assam Package 1 Details -->
+        <section id="assam-package1-details" class="page">
+    <h2>Assam Deluxe Tour</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('assam-packages')" class="btn">Back to Assam Packages</a>
+</section>
+
+<!-- assam Package 2 Details -->
+<section id="assam-package2-details" class="page">
+    <h2>Assam Nature Walk Tour and Travels</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel3.jpg" alt="3-Star Hotel Stay">
+            <h3>3-Star Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>City Tour, Breakfast Included</p>
+            <p>Price: ₹2999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel4.jpg" alt="Budget Hotel Stay">
+            <h3>Budget Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>Tour of Local Attractions</p>
+            <p>Price: ₹2499</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('assam-packages')" class="btn"> Back to Assam Packages</a>
+</section>
+
+<!-- assam Package 3 Details -->
+<section id="assam-package3-details" class="page">
+    <h2>Holiday Heaven</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('assam-packages')" class="btn">Back to Assam Packages</a>
+</section>
+<!-- assam Package 4 Details -->
+<section id="assam-package4-details" class="page">
+    <h2>Skyway Tours</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('assam-packages')" class="btn">Back to Assam Packages</a>
+</section>
+
+        <!-- Ahmedabad Packages Section -->
+        <section id="ahmedabad-packages" class="page">
+            <h2>Ahmedabad Travel Packages</h2>
+            <div class="package-list">
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1288860069/photo/view-of-old-ruins-against-sky-ahmedabad-gujarat-india.jpg?s=612x612&w=0&k=20&c=uZslexpPMZ9TvS9y2s6OXwH59IJxAqwmmdTnGpj9nAs=" alt="Ahmedabad Package 1">
+                    <h3>Journey Junction</h3>
+                    <p>Starting from ₹3599</p>
+                    <a href="#" onclick="showPage('ahmedabad-package1-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/459736963/photo/temple.jpg?s=612x612&w=0&k=20&c=0pMCRZO57Q43AXznTbpnYNKTqeVHTNRjBCYVn7GgL1U=" alt="Ahmedabad Package 2">
+                    <h3>Serene Escapes Travel Hub</h3>
+                    <p>Starting from ₹4999</p>
+                    <a href="#" onclick="showPage('ahmedabad-package2-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1412192774/photo/jama-masjid-ahmedabad-gujarat-india.jpg?s=612x612&w=0&k=20&c=hRMCxSlzvCDZmys0IS52d-j1oF_q9Qc1fd5u1-PsAxM=" alt="Ahmedabad Package 3">
+                    <h3>Destiny Tours</h3>
+                    <p>Starting from ₹5499</p>
+                    <a href="#" onclick="showPage('ahmedabad-package3-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1154210617/photo/ellis-bridge-ahmedabad.jpg?s=612x612&w=0&k=20&c=PzZwRJ5gPvmtown5gQUo-Xq08tJLHU30UdEdSW4euGE=" alt="Ahmedabad Package 4">
+                    <h3>Travel Horizon Tour and Travels</h3>
+                    <p>Starting from ₹1999</p>
+                    <a href="#" onclick="showPage('ahmedabad-package4-details')" class="btn">Explore</a>
+                </div>
+                <!-- Add more packages as needed -->
+            </div>
+        </section> 
+<!-- ahmedabad Package 1 Details -->
+        <section id="ahmedabad-package1-details" class="page">
+    <h2>Journey Junction</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('ahmedabad-packages')" class="btn">Back to Ahmedabad Packages</a>
+</section>
+
+<!-- ahmedabad Package 2 Details -->
+<section id="ahmedabad-package2-details" class="page">
+    <h2>Serene Escapes Travel Hub</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel3.jpg" alt="3-Star Hotel Stay">
+            <h3>3-Star Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>City Tour, Breakfast Included</p>
+            <p>Price: ₹2999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel4.jpg" alt="Budget Hotel Stay">
+            <h3>Budget Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>Tour of Local Attractions</p>
+            <p>Price: ₹2499</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('ahmedabad-packages')" class="btn"> Back to Ahmedabad Packages</a>
+</section>
+
+<!-- ahmedabad Package 3 Details -->
+<section id="ahmedabad-package3-details" class="page">
+    <h2>Destiny Tours</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('ahmedabad-packages')" class="btn">Back to Ahmedabad Packages</a>
+</section>
+<!-- ahmedabad Package 4 Details -->
+<section id="ahmedabad-package4-details" class="page">
+    <h2>Travel Horizon Tour and Travels</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('ahmedabad-packages')" class="btn">Back to Ahmedabad Packages</a>
+</section>
+        <!-- Ladakh Packages Section -->
+        <section id="ladakh-packages" class="page">
+            <h2>Ladakh Travel Packages</h2>
+            <div class="package-list">
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1341679712/photo/gravel-road-at-sunset-with-vestrahorn-mountain-and-a-car-driving-ladakh.jpg?s=612x612&w=0&k=20&c=a3nHok9fXiAX7boc7H4pfTovgDFF2MA4SNUjanG3Sg8=" alt="Jaipur Package 1">
+                    <h3>Sunset Voyages</h3>
+                    <p>Starting from ₹2599</p>
+                    <a href="#" onclick="showPage('ladakh-package1-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/618007380/photo/khardung-la.jpg?s=612x612&w=0&k=20&c=sOnOeZs5tAiGTPkC6jxzJYRbTNt3KaYfsiG5tibIn3Y=" alt="Jaipur Package 2">
+                    <h3>Beyond Boundaries Tours and Travels</h3>
+                    <p>Starting from ₹3599</p>
+                    <a href="#" onclick="showPage('ladakh-package2-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/691899640/photo/prayer-tibetan-flags-and-the-namgyal-tsemo-monastery-with-mountain-background-in-leh-ladakh.jpg?s=612x612&w=0&k=20&c=reMY3xjxDzyrsEp8uONtagYJKXLMJcjE_hcnO6-7vcs=" alt="Jaipur Package 3">
+                    <h3>Pathfinder Travels</h3>
+                    <p>Starting from ₹1999</p>
+                    <a href="#" onclick="showPage('ladakh-package3-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1310537962/photo/beautiful-landscape-of-himalayas-high-lake-at-pangong-lake-ladakh-region-india.jpg?s=612x612&w=0&k=20&c=hxe7n0Fb9iQl6M2S905oZ8x8JumvM7VI0PxWyTaR3n0=" alt="Jaipur Package 4">
+                    <h3>JourneyJoy Travels</h3>
+                    <p>Starting from ₹3999</p>
+                    <a href="#" onclick="showPage('ladakh-package4-details')" class="btn">Explore</a>
+                </div>
+                <!-- Add more packages as needed -->
+            </div>
+        </section>
+<!-- ladakh Package 1 Details -->
+        <section id="ladakh-package1-details" class="page">
+    <h2>Sunset Voyages</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('ladakh-packages')" class="btn">Back to Ladakh Packages</a>
+</section>
+
+<!-- ladakh Package 2 Details -->
+<section id="ladakh-package2-details" class="page">
+    <h2>Beyond Boundaries Tours and Travels</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel3.jpg" alt="3-Star Hotel Stay">
+            <h3>3-Star Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>City Tour, Breakfast Included</p>
+            <p>Price: ₹2999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel4.jpg" alt="Budget Hotel Stay">
+            <h3>Budget Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>Tour of Local Attractions</p>
+            <p>Price: ₹2499</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('ladakh-packages')" class="btn"> Back to Ladakh Packages</a>
+</section>
+
+<!-- ladakh Package 3 Details -->
+<section id="ladakh-package3-details" class="page">
+    <h2>Pathfinder Travels</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('ladakh-packages')" class="btn">Back to Ladakh Packages</a>
+</section>
+<!-- ladakh Package 4 Details -->
+<section id="ladakh-package4-details" class="page">
+    <h2>JourneyJoy Travels</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('ladakh-packages')" class="btn">Back to Ladakh Packages</a>
+</section>
+
+        <!-- Jaipur Packages Section -->
+        <section id="jaipur-packages" class="page">
+            <h2>Jaipur Travel Packages</h2>
+            <div class="package-list">
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1310445552/photo/multicolor-lighting-of-the-hawa-mahal.jpg?s=612x612&w=0&k=20&c=uq0iMdSHrrjXLTcRJv5MKCXrNpe2JKa0gKIHBNuTmUw=" alt="Jaipur Package 1">
+                    <h3>Harivansh Tours</h3>
+                    <p>Starting from ₹4599</p>
+                    <a href="#" onclick="showPage('jaipur-package1-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/1179615774/photo/taj-mahal-from-amber-fort.jpg?s=612x612&w=0&k=20&c=t1xBs7ZKXfNL6_3RRZQW9fOktWuizaqoREudyWkuycU=" alt="Jaipur Package 2">
+                    <h3>Sunrise Travel Hub</h3>
+                    <p>Starting from ₹5999</p>
+                    <a href="#" onclick="showPage('jaipur-package2-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/154894958/photo/amber-fort-jaipur-india.jpg?s=612x612&w=0&k=20&c=gCNirw30cmkl7clV30l8mcbmxOk-IAoT5ACxHRBQsdA=" alt="Jaipur Package 3">
+                    <h3>Royal Jaipur Tour</h3>
+                    <p>Starting from ₹6999</p>
+                    <a href="#" onclick="showPage('jaipur-package3-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/85649425/photo/couple-on-elephant-ride-india.jpg?s=612x612&w=0&k=20&c=f7SCh3lCoU9ubr_nJCxh5oIRPJrXIuBdzDyJPDjKWZY=" alt="Jaipur Package 4">
+                    <h3>SRM travel private limited</h3>
+                    <p>Starting from ₹3999</p>
+                    <a href="#" onclick="showPage('jaipur-package4-details')" class="btn">Explore</a>
+                </div>
+                <!-- Add more packages as needed -->
+            </div>
+        </section>
+<!-- jaipur Package 1 Details -->
+        <section id="jaipur-package1-details" class="page">
+    <h2>Harivansh Tours</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('jaipur-packages')" class="btn">Back to Jaipur Packages</a>
+</section>
+
+<!-- jaipur Package 2 Details -->
+<section id="jaipur-package2-details" class="page">
+    <h2>Sunrise Travel Hub</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel3.jpg" alt="3-Star Hotel Stay">
+            <h3>3-Star Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>City Tour, Breakfast Included</p>
+            <p>Price: ₹2999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel4.jpg" alt="Budget Hotel Stay">
+            <h3>Budget Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>Tour of Local Attractions</p>
+            <p>Price: ₹2499</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('jaipur-packages')" class="btn"> Back to Jaipur Packages</a>
+</section>
+
+<!-- jaipur Package 3 Details -->
+<section id="jaipur-package3-details" class="page">
+    <h2>Royal Jaipur Tour</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('jaipur-packages')" class="btn">Back to Jaipur Packages</a>
+</section>
+<!-- jaipur Package 4 Details -->
+<section id="jaipur-package4-details" class="page">
+    <h2>SRM travel private limited</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('jaipur-packages')" class="btn">Back to Jaipur Packages</a>
+</section>
+        
+ <!-- Hyderabad Packages Section -->
+        <section id="hyderabad-packages" class="page">
+            <h2>Hyderabad Travel Packages</h2>
+            <div class="package-list">
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/2157396962/photo/the-qutub-shahi-tombs-ibrahim-bagh-hyderabad-telangana-india.jpg?s=612x612&w=0&k=20&c=zk3TfGXCn5ztgv0suIrJY9-Mehes3_B2hyzQhogPlBg=" alt="Hyderabad Package 1">
+                    <h3>Origin Tour and Travels</h3>
+                    <p>Starting from ₹3999</p>
+                    <a href="#" onclick="showPage('hyderabad-package1-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/144455092/photo/charminar-at-dusk.jpg?s=612x612&w=0&k=20&c=lpmCVsZXzJjuPxBTdsoqn7ZsbGOSzM0ippCAfIhTu8g=" alt="Hyderabad Package 2">
+                    <h3>Tripentra Travels</h3>
+                    <p>Starting from ₹2999</p>
+                    <a href="#" onclick="showPage('hyderabad-package2-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/655213586/photo/love-hyderabad-sculpture-india.jpg?s=612x612&w=0&k=20&c=1f8rFpkQ_terIz4-puAQpkld6IieauHviqd0_iIbqlc=" alt="Hyderabad Package 3">
+                    <h3>Tour and Travel world</h3>
+                    <p>Starting from ₹1999</p>
+                    <a href="#" onclick="showPage('hyderabad-package3-details')" class="btn">Explore</a>
+                </div>
+                <div class="package-card">
+                    <img src="https://media.gettyimages.com/id/142420587/photo/busy-indian-roads.jpg?s=612x612&w=0&k=20&c=apt0PUG7rJeZdL4qnNAx6ThnGL9OqkJ51skovbl1ViY=" alt="Hyderabad Package 4">
+                    <h3>Tripisor</h3>
+                    <p>Starting from ₹4599</p>
+                    <a href="#" onclick="showPage('hyderabad-package4-details')" class="btn">Explore</a>
+                </div>
+                <!-- Add more packages as needed -->
+            </div>
+        </section>
+<!-- hyderabad Package 1 Details -->
+        <section id="hyderabad-package1-details" class="page">
+    <h2>Origin Tour and Travels</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('hyderabad-packages')" class="btn">Back to Hyderabad Packages</a>
+</section>
+
+<!-- hyderabad Package 2 Details -->
+<section id="hyderabad-package2-details" class="page">
+    <h2>Tripentra Travels</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel3.jpg" alt="3-Star Hotel Stay">
+            <h3>3-Star Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>City Tour, Breakfast Included</p>
+            <p>Price: ₹2999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel4.jpg" alt="Budget Hotel Stay">
+            <h3>Budget Hotel Stay</h3>
+            <p>2 Days, 1 Night</p>
+            <p>Tour of Local Attractions</p>
+            <p>Price: ₹2499</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('hyderabad-packages')" class="btn"> Back to Hyderabad Packages</a>
+</section>
+
+<!-- hyderabad Package 3 Details -->
+<section id="hyderabad-package3-details" class="page">
+    <h2>Tour and Travel world</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('hyderabad-packages')" class="btn">Back to Hyderabad Packages</a>
+</section>
+<!-- hyderabad Package 4 Details -->
+<section id="hyderabad-package4-details" class="page">
+    <h2>Tripisor</h2>
+    <div class="package-list">
+        <!-- Package Option 1 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel1.jpg" alt="4-Star Hotel Stay">
+            <h3>4-Star Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>City Tour, Breakfast & Dinner</p>
+            <p>Price: ₹3999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+        <!-- Package Option 2 -->
+        <div class="package-card">
+            <img src="https://example.com/mumbai-hotel2.jpg" alt="Luxury Hotel Stay">
+            <h3>Luxury Hotel Stay</h3>
+            <p>3 Days, 2 Nights</p>
+            <p>Luxury Amenities, All Meals Included</p>
+            <p>Price: ₹5999</p>
+            <a href="https://your-payment-gateway-url.com" class="btn">Pay Now</a>
+        </div>
+    </div>
+    <a href="#" onclick="showPage('hyderabad-packages')" class="btn">Back to Hyderabad Packages</a>
+</section>
+                
+
+        <!-- Search City Section -->
+        <section id="search" class="page">
+            <h2>Search Your City</h2>
+            <input type="text" id="city-search" placeholder="Enter city name..." oninput="showSearchResults()">
+            <div id="search-results">
+                <!-- Search results will appear here -->
+            </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section id="feedback" class="page">
+            <h2>Feedback</h2>
+            <form>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="btn">Submit Feedback</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page">
+            <h2>Contact Us</h2>
+            <p>Address: 123 Travel Street, Wanderlust City, India</p>
+            <p>Phone: +91 9876543210</p>
+            <p>Email: contact@tourihstan.com</p>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="page">
+            <h2>About Us</h2>
+            <p>Made by HARSH ABDUL.We are a leading travel platform connecting local travel companies with travelers. Our mission is to provide the best travel experiences in India through curated packages.</p>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 TouriHSTan. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function showSearchResults() {
+            const query = document.getElementById('city-search').value.toLowerCase();
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = '';
+
+            if (query) {
+                const cities = ['mumbai', 'delhi', 'bangalore', 'kolkata', 'chennai', 'kashmir', 'kerala', 'assam', 'ahmedabad', 'ladakh', 'jaipur', 'hyderabad', 'Boathouse vibes'];
+                const filteredCities = cities.filter(city => city.includes(query));
+
+                filteredCities.forEach(city => {
+                    const resultDiv = document.createElement('div');
+                    resultDiv.className = 'search-result';
+                    resultDiv.textContent = city.charAt(0).toUpperCase() + city.slice(1);
+                    resultDiv.onclick = () => showPage(`${city}-packages`);
+                    resultsContainer.appendChild(resultDiv);
+                });
+            }
+        }
+    </script>
+</body>
+<script>
+    function showPage(pageId) {
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => {
+            if (page.id === pageId) {
+                page.classList.add('active');
+            } else {
+                page.classList.remove('active');
+            }
+        });
+    }
+</script>
+
