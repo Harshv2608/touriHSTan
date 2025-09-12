@@ -31,7 +31,7 @@
 ## 🚀 Getting Started
 
 ### 1. Clone the repository
-```bash
+
 git clone https://github.com/Harshv2608/Sustain-a-bite.git
 cd Sustain-a-bite
 ### 2. Open in browser
