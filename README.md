@@ -34,60 +34,65 @@
 ```bash
 git clone https://github.com/Harshv2608/Sustain-a-bite.git
 cd Sustain-a-bite
-2. Open in browser
+### 2. Open in browser
+Since this is a static frontend, you can simply open `index.html` in your browser.  
+For local development with backend API, update API endpoint URLs in the JavaScript files (e.g., `fetch("https://your-backend-url/...")`).  
 
-Since this is a static frontend, you can simply open index.html in your browser.
-For local development with backend API, update API endpoint URLs in the JavaScript files (e.g., fetch("https://your-backend-url/...")).
+---
 
-📂 Project Structure
+## 📂 Project Structure
+
 Sustain-a-bite/
-│── index.html              # Landing page
-│── login.html              # Firebase login/signup
-│── donor-form.html         # Donor form
-│── recipient-form.html     # Recipient form
-│── results.html            # Matches/results page
-│── css/                    # Stylesheets
-│── js/                     # JavaScript files
-│── assets/                 # Images, icons, media
-└── README.md               # Project documentation
-
-🔐 Authentication
-
-This project uses Firebase Authentication.
-
-Users must log in before submitting donor/recipient forms.
-
-Only authenticated users can view matches.
-
-📸 Screenshots
-
-(Add screenshots here once available — UI of donor form, recipient form, and results page)
-
-🤝 Contributing
-
-Contributions are welcome! Here’s how:
-
-Fork the repo
-
-Create a new branch (feature-newUI)
-
-Commit your changes
-
-Push and create a Pull Request
-
-📜 License
-
-This project is licensed under the MIT License – free to use, modify, and distribute.
-
-🌍 Related Repositories
-
-🔗 Sustain-a-Bite Backend
-
-👨‍💻 Team
-
-Built with ❤️ by Harsh Vardhan and team for a sustainable future. 🌱✨
+│── index.html # Landing page
+│── login.html # Firebase login/signup
+│── donor-form.html # Donor form
+│── recipient-form.html # Recipient form
+│── results.html # Matches/results page
+│── css/ # Stylesheets
+│── js/ # JavaScript files
+│── assets/ # Images, icons, media
+└── README.md # Project documentation
 
 
 ---
 
-Do you also want me to now create the **backend README.md** in this same polished style (with API docs include
+## 🔐 Authentication
+
+This project uses **Firebase Authentication**.  
+
+- Users must log in before submitting donor/recipient forms.  
+- Only authenticated users can view matches.  
+
+---
+
+## 📸 Screenshots
+
+> _(Add screenshots here once available — UI of donor form, recipient form, and results page)_  
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Here’s how:  
+1. Fork the repo  
+2. Create a new branch (`feature-newUI`)  
+3. Commit your changes  
+4. Push and create a Pull Request  
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License** – free to use, modify, and distribute.  
+
+---
+
+## 🌍 Related Repositories
+
+- 🔗 [Sustain-a-Bite Backend](https://github.com/Harshv2608/Sustain-a-bite-backend)  
+
+---
+
+## 👨‍💻 Team
+
+Built with ❤️ by **Harsh Vardhan** and team for a sustainable future. 🌱✨  
