@@ -43,14 +43,14 @@ For local development with backend API, update API endpoint URLs in the JavaScri
 ## 📂 Project Structure
 
 Sustain-a-bite/
-│── index.html # Landing page
-│── login.html # Firebase login/signup
-│── donor-form.html # Donor form
-│── recipient-form.html # Recipient form
-│── results.html # Matches/results page
-│── css/ # Stylesheets
-│── js/ # JavaScript files
-│── assets/ # Images, icons, media
+├── index.html # Landing page
+├── login.html # Firebase login/signup
+├── donor-form.html # Donor form (for food donors)
+├── recipient-form.html # Recipient form (for food recipients)
+├── results.html # Matches/results page
+├── css/ # Stylesheets
+├── js/ # JavaScript files
+├── assets/ # Images, icons, media
 └── README.md # Project documentation
 
 
