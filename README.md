@@ -32,40 +32,30 @@ This project was developed as a first-year web development project to demonstrat
 
 To run the project on your local machine:
 
-1. Clone the repository:
+1. **Clone the repository:**
 
    
    git clone https://github.com/Harshv2608/touriHSTan.git
    cd touriHSTan
 
-2. Open the index.html file in your preferred web browser.
+2. **Open index.html** file in your preferred web browser.
 
-Contributing
+---
+
+## Contributing
 
 Contributions are welcome! To contribute:
 
-1.Fork the repository.
+- Fork the repository.
+- Create a new branch: git checkout -b feature-name
+- Make your changes.
+- Commit your changes: git commit -m "Add new feature"
+- Push to your branch: git push origin feature-name
+- Open a pull request.
 
-2.Create a new branch:
+---
 
-git checkout -b feature-name
+## License 
 
-
-Make your changes.
-
-Commit your changes:
-
-git commit -m "Add new feature"
-
-
-Push to your branch:
-
-git push origin feature-name
-
-
-Open a pull request.
-
-License
-
-This project is licensed under the MIT License. See the LICENSE
- file for details.   
+**This project is licensed under the MIT License.**
+---
