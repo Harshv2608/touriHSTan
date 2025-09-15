@@ -1,64 +1,71 @@
-🧳 TouriHSTan – Travel & Tour Guide Platform
+# TouriHSTan – Travel & Tour Guide Platform
 
-TouriHSTan is a responsive travel website designed to showcase curated tour packages across various Indian cities. Built as a first-year project, it offers users an intuitive interface to explore destinations, view detailed itineraries, and connect with local travel agencies.
+TouriHSTan is a responsive travel website built to showcase curated tour packages across various Indian cities.  
+This project was developed as a first-year web development project to demonstrate practical frontend and basic backend skills.
 
-🔗 Live Demo: https://harshv2608.github.io/touriHSTan/
+**Live Demo:** [https://harshv2608.github.io/touriHSTan/](https://harshv2608.github.io/touriHSTan/)
 
-🚀 Features
+---
 
-City Exploration: Discover popular cities like Mumbai, Delhi, and Goa with dedicated pages highlighting top attractions and experiences.
+## Features
 
-Curated Tour Packages: Each city page offers a selection of themed tour packages, complete with duration, highlights, inclusions, and pricing.
+- **City Exploration:** Discover popular cities like Mumbai, Delhi, and Goa with dedicated pages highlighting top attractions and experiences.
+- **Curated Tour Packages:** Each city page offers themed tour packages with details like duration, highlights, inclusions, and pricing.
+- **Responsive Design:** Works well on both desktop and mobile devices.
+- **User Interaction:** Includes pages like "About Us," "Contact Us," and "Feedback" to engage users.
 
-Responsive Design: Optimized for both desktop and mobile devices, ensuring a seamless user experience.
+---
 
-User Engagement: Pages like "About Us," "Contact Us," and "Feedback" facilitate user interaction and feedback collection.
+## Technologies Used
 
-🛠️ Technologies Used
+- **Frontend:**
+  - HTML5
+  - CSS3
+  - JavaScript
+- **Backend:**
+  - Firebase Authentication
+  - Firebase Realtime Database
 
-Frontend:
+---
 
-HTML5
+## Running Locally
 
-CSS3
+To run the project on your local machine:
 
-JavaScript
+1. Clone the repository:
 
-Backend:
+   
+   git clone https://github.com/Harshv2608/touriHSTan.git
+   cd touriHSTan
 
-Firebase Authentication
+2. Open the index.html file in your preferred web browser.
 
-Firebase Realtime Database
+Contributing
+
+Contributions are welcome! To contribute:
+
+1.Fork the repository.
+
+2.Create a new branch:
+
+git checkout -b feature-name
 
 
+Make your changes.
 
-🧪 Getting Started
+Commit your changes:
 
-Clone the Repository:
-
-git clone https://github.com/Harshv2608/touriHSTan.git
-cd touriHSTan
+git commit -m "Add new feature"
 
 
-Open index.html in your preferred browser to view the project locally.
+Push to your branch:
 
-🤝 Contributing
+git push origin feature-name
 
-Contributions are welcome! To get started:
 
-Fork the Repository.
+Open a pull request.
 
-Create a New Branch (git checkout -b feature-name).
+License
 
-Make Your Changes.
-
-Commit Your Changes (git commit -am 'Add new feature').
-
-Push to the Branch (git push origin feature-name).
-
-Create a New Pull Request.
-
-📄 License
-
-This project is licensed under the MIT License – see the LICENSE
- file for details.
+This project is licensed under the MIT License. See the LICENSE
+ file for details.   
